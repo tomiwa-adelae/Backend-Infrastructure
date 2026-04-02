@@ -1,0 +1,135 @@
+[
+  {
+    "name": "cornerstone-backend-container",
+    "image": "227830417126.dkr.ecr.eu-west-1.amazonaws.com/cornerstone",
+    "cpu": 256,
+    "memory": 512,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 8000,
+        "hostPort": 8000
+      }
+    ],
+    "mountPoints": [
+      {
+        "sourceVolume": "uploads",
+        "containerPath": "/app/uploads",
+        "readOnly": false
+      }
+    ],
+    "environment": [
+      {
+        "name": "SERVICE_TYPE",
+        "value": "backend"
+      }
+    ],
+    "secrets": [
+      {
+        "name": "AI_AGENT_URL",
+        "valueFrom": "${secret_arn}:AI_AGENT_URL::"
+      },
+      {
+        "name": "ALLOWED_HOSTS",
+        "valueFrom": "${secret_arn}:ALLOWED_HOSTS::"
+      },
+      {
+        "name": "CLOUDINARY_API_KEY",
+        "valueFrom": "${secret_arn}:CLOUDINARY_API_KEY::"
+      },
+      {
+        "name": "CLOUDINARY_API_SECRET",
+        "valueFrom": "${secret_arn}:CLOUDINARY_API_SECRET::"
+      },
+      {
+        "name": "CLOUDINARY_NAME",
+        "valueFrom": "${secret_arn}:CLOUDINARY_NAME::"
+      },
+      {
+        "name": "CORS_ALLOWED_ORIGINS",
+        "valueFrom": "${secret_arn}:CORS_ALLOWED_ORIGINS::"
+      },
+      {
+        "name": "DATABASE_HOST",
+        "valueFrom": "${secret_arn}:DATABASE_HOST::"
+      },
+      {
+        "name": "DATABASE_NAME",
+        "valueFrom": "${secret_arn}:DATABASE_NAME::"
+      },
+      {
+        "name": "DATABASE_PASSWORD",
+        "valueFrom": "${secret_arn}:DATABASE_PASSWORD::"
+      },
+      {
+        "name": "DATABASE_PORT",
+        "valueFrom": "${secret_arn}:DATABASE_PORT::"
+      },
+      {
+        "name": "DATABASE_URL",
+        "valueFrom": "${secret_arn}:DATABASE_URL::"
+      },
+      {
+        "name": "DATABASE_USER",
+        "valueFrom": "${secret_arn}:DATABASE_USER::"
+      },
+      {
+        "name": "DEBUG",
+        "valueFrom": "${secret_arn}:DEBUG::"
+      },
+      {
+        "name": "DJANGO_REFRESH_URL",
+        "valueFrom": "${secret_arn}:DJANGO_REFRESH_URL::"
+      },
+      {
+        "name": "ENV",
+        "valueFrom": "${secret_arn}:ENV::"
+      },
+      {
+        "name": "GOOGLE_APPLICATION_CREDENTIALS",
+        "valueFrom": "${secret_arn}:GOOGLE_APPLICATION_CREDENTIALS::"
+      },
+      {
+        "name": "NODE_SIGNING_URL",
+        "valueFrom": "${secret_arn}:NODE_SIGNING_URL::"
+      },
+      {
+        "name": "NODE_WALLET_SERVER_URL",
+        "valueFrom": "${secret_arn}:NODE_WALLET_SERVER_URL::"
+      },
+      {
+        "name": "DOCUMENT_REGISTRY_ADDRESS",
+        "valueFrom": "${secret_arn}:DOCUMENT_REGISTRY_ADDRESS::"
+      },
+      {
+        "name": "REDIS_URL",
+        "valueFrom": "${secret_arn}:REDIS_URL::"
+      },
+      {
+        "name": "SECRET_KEY",
+        "valueFrom": "${secret_arn}:SECRET_KEY::"
+      },
+      {
+        "name": "SEPOLIA_RPC_URL",
+        "valueFrom": "${secret_arn}:SEPOLIA_RPC_URL::"
+      },
+      {
+        "name": "STORY_PUSH_URL",
+        "valueFrom": "${secret_arn}:STORY_PUSH_URL::"
+      },
+      {
+        "name": "WALLET_PRIVATE_KEY",
+        "valueFrom": "${secret_arn}:WALLET_PRIVATE_KEY::"
+      }
+    ],
+    "user": "0",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/backend-task-family",
+        "awslogs-region": "eu-west-1",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]
