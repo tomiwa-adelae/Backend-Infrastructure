@@ -59,7 +59,7 @@ module "ecs" {
   cluster_name       = "cornerstone-ecs-cluster"
   task_family        = "backend-task-family"
   container_name     = "cornerstone-backend-container"
-  container_image    = "227830417126.dkr.ecr.eu-west-1.amazonaws.com/cornerstone"
+  container_image    = "055533306852.dkr.ecr.eu-west-1.amazonaws.com/cornerstone"
   container_port     = 8000
   subnets            = module.vpc.public_subnets
   security_group     = module.vpc.ecs_security_group_id
